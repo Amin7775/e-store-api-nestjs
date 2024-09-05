@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 15022001
-      POSTGRES_DB: nest
+      POSTGRES_DB: eccommerce-db
     networks:
       - e-store
 

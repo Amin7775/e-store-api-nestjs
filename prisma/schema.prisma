@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Seller {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  name  String
+  email String @unique
+  hash  String
+
+  products Product[]
+  orders   Order[]
+}
+
+model Product {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  title       String
+  description String
+  price       Float
+  stock       Int
+
+  seller   Seller @relation(fields: [sellerId], references: [id])
+  sellerId Int
+
+  orders  OrderProduct[]
+  reviews Review[]
+}
+
+model Buyer {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  name  String
+  email String @unique
+  hash  String
+
+  orders Order[]
+}
+
+model Order {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  buyer   Buyer @relation(fields: [buyerId], references: [id])
+  buyerId Int
+
+  seller   Seller @relation(fields: [sellerId], references: [id])
+  sellerId Int
+
+  status String @default("pending")
+
+  products OrderProduct[]
+  reviews  Review[]
+}
+
+model OrderProduct {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  quantity Int
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+
+  order   Order @relation(fields: [orderId], references: [id])
+  orderId Int
+}
+
+model Review {
+  id        Int     @id @default(autoincrement())
+  rating    Int
+  comment   String
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+  order     Order   @relation(fields: [orderId], references: [id])
+  orderId   Int
+}
