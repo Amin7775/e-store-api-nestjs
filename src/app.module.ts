@@ -4,8 +4,18 @@ import { BuyerModule } from './buyer/buyer.module';
 import { ProductModule } from './product/product.module';
 import { OrderModule } from './order/order.module';
 import { ReviewModule } from './review/review.module';
+import { PrismaModule } from './prisma/prisma.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [SellerModule, BuyerModule, ProductModule, OrderModule, ReviewModule],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    SellerModule,
+    BuyerModule,
+    ProductModule,
+    OrderModule,
+    ReviewModule,
+    PrismaModule,
+  ],
 })
 export class AppModule {}
