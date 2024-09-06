@@ -1,0 +1,715 @@
+{
+	"info": {
+		"_postman_id": "53f9a562-c856-4ca5-9de5-92e9c541826a",
+		"name": "E-store",
+		"description": "# 🚀 E-STORE POSTMAN TESTING DOC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38047615"
+	},
+	"item": [
+		{
+			"name": "seller -> register - post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Al Amin\",\r\n    \"email\": \"amin777589@gmail.com\",\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/seller/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"seller",
+						"register"
+					]
+				},
+				"description": "StartFragmentThis endpoint registers a new seller with the given details (name, email, and password).EndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "seller -> login- post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"amin777589@gmail.com\",\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/seller/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"seller",
+						"login"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				},
+				"description": "StartFragment This logs in an existing seller and returns the seller's data."
+			},
+			"response": []
+		},
+		{
+			"name": "seller -> all products- get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/seller/:sellerId/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"seller",
+						":sellerId",
+						"products"
+					],
+					"variable": [
+						{
+							"key": "sellerId",
+							"value": "1"
+						}
+					]
+				},
+				"description": "StartFragmentRetrieves all products for a given seller."
+			},
+			"response": []
+		},
+		{
+			"name": "seller -> add new products - post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"processor\",\r\n  \"description\": \"Very good\",\r\n  \"price\": 400,      \r\n  \"stock\": 54      \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/seller/:sellerId/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"seller",
+						":sellerId",
+						"products"
+					],
+					"variable": [
+						{
+							"key": "sellerId",
+							"value": "3"
+						}
+					]
+				},
+				"description": "Adds a new product under the seller with ID"
+			},
+			"response": []
+		},
+		{
+			"name": "seller -> all orders connected to a seller - get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/seller/:sellerId/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"seller",
+						":sellerId",
+						"orders"
+					],
+					"variable": [
+						{
+							"key": "sellerId",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Fetches all orders associated with a specific seller"
+			},
+			"response": []
+		},
+		{
+			"name": "seller -> update order status - Patch",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"status\": \"shipped\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/seller/:sellerId/orders/:orderId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"seller",
+						":sellerId",
+						"orders",
+						":orderId"
+					],
+					"variable": [
+						{
+							"key": "sellerId",
+							"value": "1"
+						},
+						{
+							"key": "orderId",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Updates the status of a specific order for the seller"
+			},
+			"response": []
+		},
+		{
+			"name": "buyer -> register - post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Al Amin\",\r\n    \"email\": \"amin777589@gmail.com\",\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/buyer/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"buyer",
+						"register"
+					]
+				},
+				"description": "Registers a new buyer with the provided name, email, and password"
+			},
+			"response": []
+		},
+		{
+			"name": "buyer -> login- post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"amin777589@gmail.com\",\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/buyer/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"buyer",
+						"login"
+					]
+				},
+				"description": "Logs in a buyer with the given credentials (email and password)"
+			},
+			"response": []
+		},
+		{
+			"name": "buyer -> place order - post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sellerId\": 1,\r\n    \"products\": [\r\n        {\r\n            \"productId\": 1,\r\n            \"quantity\": 2\r\n        },\r\n        {\r\n            \"productId\": 2,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/buyer/:buyerId/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"buyer",
+						":buyerId",
+						"orders"
+					],
+					"variable": [
+						{
+							"key": "buyerId",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Places an order for a buyer with a list of products and quantities from a specific seller"
+			},
+			"response": []
+		},
+		{
+			"name": "buyer -> mark order as received - Patch",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/buyer/:buyerId/orders/:orderId/received",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"buyer",
+						":buyerId",
+						"orders",
+						":orderId",
+						"received"
+					],
+					"variable": [
+						{
+							"key": "buyerId",
+							"value": "1"
+						},
+						{
+							"key": "orderId",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Marks an order as received by a buyer. The order should have a status of \"shipper\" which is set by seller for this operation to succeed ."
+			},
+			"response": []
+		},
+		{
+			"name": "buyer -> Add Review- Post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"productId\": 1,\r\n  \"rating\": 5,\r\n  \"comment\": \"Great product, very satisfied!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/buyer/:buyerId/orders/:orderId/review",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"buyer",
+						":buyerId",
+						"orders",
+						":orderId",
+						"review"
+					],
+					"variable": [
+						{
+							"key": "buyerId",
+							"value": "1"
+						},
+						{
+							"key": "orderId",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Leaves a review for a product that was part of a specific order made by the buyer."
+			},
+			"response": []
+		},
+		{
+			"name": "Product -> Browse all product - get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						"all"
+					]
+				},
+				"description": "Browse all the products from the db"
+			},
+			"response": []
+		},
+		{
+			"name": "Product -> get single product - get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/product/:productId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"product",
+						":productId"
+					],
+					"variable": [
+						{
+							"key": "productId",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Find single product from the db."
+			},
+			"response": []
+		},
+		{
+			"name": "order -> Browse all orders- get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/order/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"order",
+						"all"
+					]
+				},
+				"description": "Browse all the orders from the db."
+			},
+			"response": []
+		},
+		{
+			"name": "order -> get single order- get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/order/:orderId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"order",
+						":orderId"
+					],
+					"variable": [
+						{
+							"key": "orderId",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Find single order from the db."
+			},
+			"response": []
+		},
+		{
+			"name": "reviews-> Browse all reviews- get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/review/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"review",
+						"all"
+					]
+				},
+				"description": "Browse all the reviews from the db"
+			},
+			"response": []
+		},
+		{
+			"name": "reviews-> get single review- get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/review/:reviewId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"review",
+						":reviewId"
+					],
+					"variable": [
+						{
+							"key": "reviewId",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Find single review from the db."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
